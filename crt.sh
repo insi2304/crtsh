@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ ! -x "$(command -v jq)" ]; then
 	echo "[-] This script requires jq. Exiting."
 	exit 1
@@ -5,7 +7,7 @@ fi
 
 certdata(){
 	#give it patterns to look for within crt.sh for example %api%.site.com
-	declare -a arr=("acm" "aes" "aesws" "an" "anl" "aod" "api" "arches" "buyer" "community" "corp" "cws" "cxml" "dev" "dev10" "dev100" "dev101" "dev11" "dev12" "dev13" "dev14" "dev16" "dev17" "dev18" "dev19" "dev2" "dev20" "dev21" "dev22" "dev23" "dev24" "dev25" "dev26" "dev27" "dev28" "dev29" "dev3" "dev4" "dev5" "dev6" "dev7" "dev8" "dev9" "dms" "doc" "ebs" "eng" "estore" "guidedbuying" "hadoop" "help" "hf" "hf2" "internal" "itg" "itg2" "itg3" "load" "load100" "load101" "load102" "load103" "load104" "load106" "load2" "load200" "load3" "load4" "load5" "load6" "load7" "load8" "load9" "logi" "lq" "lq10" "lq11" "lq12" "lq13" "lq14" "lq15" "lq16" "lq17" "lq18" "lq19" "lq2" "lq20" "lq21" "lq22" "lq23" "lq24" "lq25" "lq26" "lq3" "lq4" "lq5" "lq6" "lq7" "lq9" "mach" "mig" "mig2" "mig3" "mig4" "mobile" "mon" "mws" "ows" "pe" "perf" "piwik" "prod" "pws" "qa" "rel" "s2" "s4" "sandbox" "scc" "scdev1" "scdev2" "scdev3" "scdev4" "scdev5" "scdev6" "scdev7" "scinfra1" "scinfra2" "scperf" "scperfh102" "scperfh106" "scperfh2" "scperfh6" "sctest1" "sdb" "snow" "sp" "spotbuy" "ssws" "stag" "stage" "Staging" "jenkins" "jira" "test" "testdb" "uat" "ws")
+	declare -a arr=("acm" "aes" "aesws" "an" "anl" "aod" "api" "arches" "buyer" "community" "corp" "cws" "cxml" "dev" "dev10" "dev100" "dev101" "dev11" "dev12" "dev13" "dev14" "dev16" "dev17" "dev18" "dev19" "dev2" "dev20" "dev21" "dev22" "dev23" "dev24" "dev25" "dev26" "dev27" "dev28" "dev29" "dev3" "dev4" "dev5" "dev6" "dev7" "dev8" "dev9" "dms" "doc" "ebs" "eng" "estore" "hadoop" "help" "hf" "hf2" "internal" "itg" "itg2" "itg3" "load" "load100" "load101" "load102" "load103" "load104" "load106" "load2" "load200" "load3" "load4" "load5" "load6" "load7" "load8" "load9" "logi" "lq" "lq10" "lq11" "lq12" "lq13" "lq14" "lq15" "lq16" "lq17" "lq18" "lq19" "lq2" "lq20" "lq21" "lq22" "lq23" "lq24" "lq25" "lq26" "lq3" "lq4" "lq5" "lq6" "lq7" "lq9" "mach" "mig" "mig2" "mig3" "mig4" "mobile" "mon" "mws" "ows" "pe" "perf" "piwik" "prod" "pws" "qa" "rel" "s2" "s4" "sandbox" "scc" "scdev1" "scdev2" "scdev3" "scdev4" "scdev5" "scdev6" "scdev7" "scinfra1" "scinfra2" "scperf" "scperfh102" "scperfh106" "scperfh2" "scperfh6" "sctest1" "sdb" "snow" "sp" "spotbuy" "ssws" "stag" "stage" "Staging" "jenkins" "jira" "test" "testdb" "uat" "ws")
 	for i in "${arr[@]}"
 	do
 		#get a list of domains based on our patterns in the array
