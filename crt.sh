@@ -1,9 +1,3 @@
-#!/usr/bin/env bash
-
-# This was created during a live stream on 11/16/2019
-# twitch.tv/nahamsec
-# Thank you to nukedx and dmfroberson for helping debug/improve
-
 if [ ! -x "$(command -v jq)" ]; then
 	echo "[-] This script requires jq. Exiting."
 	exit 1
